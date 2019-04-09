@@ -227,13 +227,22 @@ int64_t xmrig::Client::submit(const JobResult &result)
 
 #   ifdef XMRIG_PROXY_PROJECT
     const char *nonce = result.nonce;
+    const char *nonce64 = result.nonce64;
     const char *data  = result.result;
 #   else
     char *nonce = m_sendBuf;
     char *data  = m_sendBuf + 16;
 
-    Job::toHex(reinterpret_cast<const unsigned char*>(&result.nonce), 4, nonce);
-    nonce[8] = '\0';
+    if (result.algorithm.algo() == xmrig::KANGAROOTWELVE)
+    {
+        Job::toHex(reinterpret_cast<const unsigned char*>(&result.nonce64), 8, nonce);
+        nonce[16] = '\0';
+    }
+    else
+    {
+        Job::toHex(reinterpret_cast<const unsigned char*>(&result.nonce), 4, nonce);
+        nonce[8] = '\0';
+    }
 
     Job::toHex(result.result, 32, data);
     data[64] = '\0';

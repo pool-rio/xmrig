@@ -59,6 +59,11 @@ private:
         return reinterpret_cast<uint32_t*>(m_state.blob + (index * m_state.job.size()) + 39);
     }
 
+    inline uint64_t *nonce64(size_t index)
+    {
+        return reinterpret_cast<uint64_t*>(m_state.blob + (index * m_state.job.size()) + 39);
+    }
+
     struct State
     {
         alignas(16) uint8_t blob[xmrig::Job::kMaxBlobSize * N];

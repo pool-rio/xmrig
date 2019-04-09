@@ -59,6 +59,7 @@ public:
     inline bool isValid() const                       { return m_size > 0 && m_diff > 0; }
     inline bool setId(const char *id)                 { return m_id.setId(id); }
     inline const uint32_t *nonce() const              { return reinterpret_cast<const uint32_t*>(m_blob + 39); }
+    inline const uint64_t *nonce64() const            { return reinterpret_cast<const uint64_t*>(m_blob + 39); }
     inline const uint8_t *blob() const                { return m_blob; }
     inline const Algorithm &algorithm() const         { return m_algorithm; }
     inline const Id &clientId() const                 { return m_clientId; }
@@ -67,6 +68,7 @@ public:
     inline int threadId() const                       { return m_threadId; }
     inline size_t size() const                        { return m_size; }
     inline uint32_t *nonce()                          { return reinterpret_cast<uint32_t*>(m_blob + 39); }
+    inline uint64_t *nonce64()                        { return reinterpret_cast<uint64_t*>(m_blob + 39); }
     inline uint32_t diff() const                      { return static_cast<uint32_t>(m_diff); }
     inline uint64_t target() const                    { return m_target; }
     inline uint64_t height() const                    { return m_height; }
@@ -84,6 +86,7 @@ public:
 
     static bool fromHex(const char* in, unsigned int len, unsigned char* out);
     static inline uint32_t *nonce(uint8_t *blob)   { return reinterpret_cast<uint32_t*>(blob + 39); }
+    static inline uint64_t *nonce64(uint8_t *blob) { return reinterpret_cast<uint64_t*>(blob + 39); }
     static inline uint64_t toDiff(uint64_t target) { return 0xFFFFFFFFFFFFFFFFULL / target; }
     static void toHex(const unsigned char* in, unsigned int len, char* out);
 
