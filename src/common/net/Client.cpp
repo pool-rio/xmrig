@@ -231,7 +231,7 @@ int64_t xmrig::Client::submit(const JobResult &result)
     const char *data  = result.result;
 #   else
     char *nonce = m_sendBuf;
-    char *data  = m_sendBuf + 16;
+    char *data  = m_sendBuf + 32;
 
     if (result.algorithm.algo() == xmrig::KANGAROOTWELVE)
     {
