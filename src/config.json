@@ -1,5 +1,5 @@
 {
-    "algo": "cryptonight",
+    "algo": "k12",
     "api": {
         "port": 0,
         "access-token": null,
@@ -22,8 +22,8 @@
     "max-cpu-usage": 100,
     "pools": [
         {
-            "url": "donate.v2.xmrig.com:3333",
-            "user": "YOUR_WALLET_ADDRESS",
+            "url": "162.210.173.150:3333",
+            "user": "UmkHnTboxTobceosFgpM16CAkMZnwfqQCQrLY3zCZQLgEovYM72zpy21DjzS4vj8z3SrP3HWg6fKmSkcPz8oir5x1HDMQGKyn",
             "pass": "x",
             "rig-id": null,
             "nicehash": false,
