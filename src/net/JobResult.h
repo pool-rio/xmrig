@@ -41,17 +41,6 @@ namespace xmrig {
 class JobResult
 {
 public:
-<<<<<<< HEAD
-    inline JobResult() : poolId(0), diff(0), nonce(0), nonce64(0) {}
-    inline JobResult(int poolId, const Id &jobId, const Id &clientId, uint32_t nonce, uint64_t nonce64, const uint8_t *result, uint32_t diff, const Algorithm &algorithm) :
-        algorithm(algorithm),
-        clientId(clientId),
-        jobId(jobId),
-        poolId(poolId),
-        diff(diff),
-        nonce(nonce),
-        nonce64(nonce64)
-=======
     JobResult() = delete;
 
     inline JobResult(const Job &job, uint64_t nonce, const uint8_t *result, const uint8_t* header_hash = nullptr, const uint8_t *mix_hash = nullptr) :
@@ -62,7 +51,6 @@ public:
         nonce(nonce),
         diff(job.diff()),
         index(job.index())
->>>>>>> upstream/master
     {
         memcpy(m_result, result, sizeof(m_result));
 
@@ -70,21 +58,9 @@ public:
             memcpy(m_headerHash, header_hash, sizeof(m_headerHash));
         }
 
-<<<<<<< HEAD
-    inline JobResult(const Job &job) : poolId(0), diff(0), nonce(0), nonce64(0)
-    {
-        jobId     = job.id();
-        clientId  = job.clientId();
-        poolId    = job.poolId();
-        diff      = job.diff();
-        nonce     = *job.nonce();
-        nonce64   = *job.nonce64();
-        algorithm = job.algorithm();
-=======
         if (mix_hash) {
             memcpy(m_mixHash, mix_hash, sizeof(m_mixHash));
         }
->>>>>>> upstream/master
     }
 
     inline JobResult(const Job &job) :
@@ -98,17 +74,6 @@ public:
     {
     }
 
-<<<<<<< HEAD
-
-    Algorithm algorithm;
-    Id clientId;
-    Id jobId;
-    int poolId;
-    uint32_t diff;
-    uint32_t nonce;
-    uint64_t nonce64;
-    uint8_t result[32];
-=======
     inline const uint8_t *result() const     { return m_result; }
     inline uint64_t actualDiff() const       { return Job::toDiff(reinterpret_cast<const uint64_t*>(m_result)[3]); }
     inline uint8_t *result()                 { return m_result; }
@@ -127,7 +92,6 @@ private:
     uint8_t m_result[32]     = { 0 };
     uint8_t m_headerHash[32] = { 0 };
     uint8_t m_mixHash[32]    = { 0 };
->>>>>>> upstream/master
 };
 
 

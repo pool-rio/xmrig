@@ -75,18 +75,6 @@ uint8_t *xmrig::MemoryPool::get(size_t size, uint32_t)
         return nullptr;
     }
 
-<<<<<<< HEAD:src/workers/MultiWorker.h
-    inline uint64_t *nonce64(size_t index)
-    {
-        return reinterpret_cast<uint64_t*>(m_state.blob + (index * m_state.job.size()) + 39);
-    }
-
-    struct State
-    {
-        alignas(16) uint8_t blob[xmrig::Job::kMaxBlobSize * N];
-        xmrig::Job job;
-    };
-=======
     uint8_t *out = m_memory->scratchpad() + m_alignOffset + m_offset;
 
     m_offset += size;
@@ -94,7 +82,6 @@ uint8_t *xmrig::MemoryPool::get(size_t size, uint32_t)
 
     return out;
 }
->>>>>>> upstream/master:src/crypto/common/MemoryPool.cpp
 
 
 void xmrig::MemoryPool::release(uint32_t)

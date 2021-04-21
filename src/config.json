@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-    "algo": "k12",
-=======
->>>>>>> upstream/master
     "api": {
         "id": null,
         "worker-id": null
@@ -66,15 +62,10 @@
     "log-file": null,
     "pools": [
         {
-<<<<<<< HEAD
-            "url": "162.210.173.150:3333",
-            "user": "UmkHnTboxTobceosFgpM16CAkMZnwfqQCQrLY3zCZQLgEovYM72zpy21DjzS4vj8z3SrP3HWg6fKmSkcPz8oir5x1HDMQGKyn",
-=======
             "algo": null,
             "coin": null,
             "url": "donate.v2.xmrig.com:3333",
             "user": "YOUR_WALLET_ADDRESS",
->>>>>>> upstream/master
             "pass": "x",
             "rig-id": null,
             "nicehash": false,
