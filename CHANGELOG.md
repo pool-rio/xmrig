@@ -1,269 +1,388 @@
-# v2.14.1
-* [#975](https://github.com/xmrig/xmrig/issues/975) Fixed crash on Linux if double thread mode used.
+# v6.12.0
+- [#2276](https://github.com/xmrig/xmrig/pull/2276) Added support for Uplexa (`cn/upx2` algorithm).
+- [#2261](https://github.com/xmrig/xmrig/pull/2261) Show total hashrate if compiled without OpenCL.
+- [#2289](https://github.com/xmrig/xmrig/pull/2289) RandomX: optimized `IMUL_RCP` instruction.
+- Added support for `--user` command line option for online benchmark.
 
-# v2.14.0
-- **[#969](https://github.com/xmrig/xmrig/pull/969) Added new algorithm `cryptonight/rwz`, short alias `cn/rwz` (also known as CryptoNight ReverseWaltz), for upcoming [Graft](https://www.graft.network/) fork.**
-- **[#931](https://github.com/xmrig/xmrig/issues/931) Added new algorithm `cryptonight/zls`, short alias `cn/zls` for [Zelerius Network](https://zelerius.org) fork.**
-- **[#940](https://github.com/xmrig/xmrig/issues/940) Added new algorithm `cryptonight/double`, short alias `cn/double` (also known as CryptoNight HeavyX), for [X-CASH](https://x-cash.org/).**
-- [#951](https://github.com/xmrig/xmrig/issues/951#issuecomment-469581529) Fixed crash if AVX was disabled on OS level.
-- [#952](https://github.com/xmrig/xmrig/issues/952) Fixed compile error on some Linux.
-- [#957](https://github.com/xmrig/xmrig/issues/957#issuecomment-468890667) Added support for embedded config.
-- [#958](https://github.com/xmrig/xmrig/pull/958) Fixed incorrect user agent on ARM platforms.
-- [#968](https://github.com/xmrig/xmrig/pull/968) Optimized `cn/r` algorithm performance.
+# v6.11.2
+- [#2207](https://github.com/xmrig/xmrig/issues/2207) Fixed regression in HTTP parser and llhttp updated to v5.1.0.
 
-# v2.13.1
-- [#946](https://github.com/xmrig/xmrig/pull/946) Optimized software AES implementations for CPUs without hardware AES support. `cn/r`, `cn/wow` up to 2.6 times faster, 4-9% improvements for other algorithms.
+# v6.11.1
+- [#2239](https://github.com/xmrig/xmrig/pull/2239) Fixed broken `coin` setting functionality.
 
-# v2.13.0
-- **[#938](https://github.com/xmrig/xmrig/issues/938) Added support for new algorithm `cryptonight/r`, short alias `cn/r` (also known as CryptoNightR or CryptoNight variant 4), for upcoming [Monero](https://www.getmonero.org/) fork on March 9, thanks [@SChernykh](https://github.com/SChernykh).**
-- [#939](https://github.com/xmrig/xmrig/issues/939) Added support for dynamic (runtime) pools reload.
-- [#932](https://github.com/xmrig/xmrig/issues/932) Fixed `cn-pico` hashrate drop, regression since v2.11.0.
+# v6.11.0
+- [#2196](https://github.com/xmrig/xmrig/pull/2196) Improved DNS subsystem and added new DNS specific options.
+- [#2172](https://github.com/xmrig/xmrig/pull/2172) Fixed build on Alpine 3.13.
+- [#2177](https://github.com/xmrig/xmrig/pull/2177) Fixed ARM specific compilation error with GCC 10.2.
+- [#2214](https://github.com/xmrig/xmrig/pull/2214) [#2216](https://github.com/xmrig/xmrig/pull/2216) [#2235](https://github.com/xmrig/xmrig/pull/2235) Optimized `cn-heavy` algorithm.
+- [#2217](https://github.com/xmrig/xmrig/pull/2217) Fixed mining job creation sequence.
+- [#2225](https://github.com/xmrig/xmrig/pull/2225) Fixed build without OpenCL support on some systems.
+- [#2229](https://github.com/xmrig/xmrig/pull/2229) Don't use RandomX JIT if `WITH_ASM=OFF`.
+- [#2228](https://github.com/xmrig/xmrig/pull/2228) Removed useless code for cryptonight algorithms.
+- [#2234](https://github.com/xmrig/xmrig/pull/2234) Fixed build error on gcc 4.8.
 
-# v2.12.0
-- [#929](https://github.com/xmrig/xmrig/pull/929) Added support for new algorithm `cryptonight/wow`, short alias `cn/wow` (also known as CryptonightR), for upcoming [Wownero](http://wownero.org) fork on February 14.
+# v6.10.0
+- [#2122](https://github.com/xmrig/xmrig/pull/2122) Fixed pause logic when both pause on battery and user activity are enabled.
+- [#2123](https://github.com/xmrig/xmrig/issues/2123) Fixed compatibility with gcc 4.8.
+- [#2147](https://github.com/xmrig/xmrig/pull/2147) Fixed many `new job` messages when solo mining.
+- [#2150](https://github.com/xmrig/xmrig/pull/2150) Updated `sse2neon.h` to the latest master, fixes build on ARMv7.
+- [#2157](https://github.com/xmrig/xmrig/pull/2157) Fixed crash in `cn-heavy` on Zen3 with manual thread count.
+- Fixed possible out of order write to log file.
+- [http-parser](https://github.com/nodejs/http-parser) replaced to [llhttp](https://github.com/nodejs/llhttp).
+- For official builds: libuv, hwloc and OpenSSL updated to latest versions.
 
-# v2.11.0
-- [#928](https://github.com/xmrig/xmrig/issues/928) Added support for new algorithm `cryptonight/gpu`, short alias `cn/gpu` (original name `cryptonight-gpu`), for upcoming [Ryo currency](https://ryo-currency.com) fork on February 14.
-- [#749](https://github.com/xmrig/xmrig/issues/749) Added support for detect hardware AES in runtime on ARMv8 platforms.
-- [#292](https://github.com/xmrig/xmrig/issues/292) Fixed build on ARMv8 platforms if compiler not support hardware AES.
+# v6.9.0
+- [#2104](https://github.com/xmrig/xmrig/pull/2104) Added [pause-on-active](https://xmrig.com/docs/miner/config/misc#pause-on-active) config option and `--pause-on-active=N` command line option.
+- [#2112](https://github.com/xmrig/xmrig/pull/2112) Added support for [Tari merge mining](https://github.com/tari-project/tari/blob/development/README.md#tari-merge-mining).
+- [#2117](https://github.com/xmrig/xmrig/pull/2117) Fixed crash when GPU mining `cn-heavy` on Zen3 system.
 
-# v2.10.0
-- [#904](https://github.com/xmrig/xmrig/issues/904) Added new algorithm `cn-pico/trtl` (aliases `cryptonight-turtle`, `cn-trtl`) for upcoming TurtleCoin (TRTL) fork.
-- Default value for option `max-cpu-usage` changed to `100` also this option now deprecated.
+# v6.8.2
+- [#2080](https://github.com/xmrig/xmrig/pull/2080) Fixed compile error in Termux.
+- [#2089](https://github.com/xmrig/xmrig/pull/2089) Optimized CryptoNight-Heavy for Zen3, 7-8% speedup.
 
-# v2.9.4
-- [#913](https://github.com/xmrig/xmrig/issues/913) Fixed Masari (MSR) support (this update required for upcoming fork).
-- [#915](https://github.com/xmrig/xmrig/pull/915) Improved security, JIT memory now read-only after patching.
+# v6.8.1
+- [#2064](https://github.com/xmrig/xmrig/pull/2064) Added documentation for config.json CPU options.
+- [#2066](https://github.com/xmrig/xmrig/issues/2066) Fixed AMD GPUs health data readings on Linux.
+- [#2067](https://github.com/xmrig/xmrig/pull/2067) Fixed compilation error when RandomX and Argon2 are disabled.
+- [#2076](https://github.com/xmrig/xmrig/pull/2076) Added support for flexible huge page sizes on Linux.
+- [#2077](https://github.com/xmrig/xmrig/pull/2077) Fixed `illegal instruction` crash on ARM.
 
-# v2.9.3
-- [#909](https://github.com/xmrig/xmrig/issues/909) Fixed compile errors on FreeBSD.
-- [#912](https://github.com/xmrig/xmrig/pull/912) Fixed, C++ implementation of `cn/half` was produce up to 13% of invalid hashes.
+# v6.8.0
+- [#2052](https://github.com/xmrig/xmrig/pull/2052) Added DMI/SMBIOS reader.
+  - Added information about memory modules on the miner startup and for online benchmark.
+  - Added new HTTP API endpoint: `GET /2/dmi`.
+  - Added new command line option `--no-dmi` or config option `"dmi"`.
+  - Added new CMake option `-DWITH_DMI=OFF`.
+- [#2057](https://github.com/xmrig/xmrig/pull/2057) Improved MSR subsystem code quality.
+- [#2058](https://github.com/xmrig/xmrig/pull/2058) RandomX JIT x86: removed unnecessary instructions.
 
-# v2.9.2
-- [#907](https://github.com/xmrig/xmrig/pull/907) Fixed crash on Linux.
+# v6.7.2
+- [#2039](https://github.com/xmrig/xmrig/pull/2039) Fixed solo mining.
 
-# v2.9.1
-- Restored compatibility with https://stellite.hashvault.pro.
+# v6.7.1
+- [#1995](https://github.com/xmrig/xmrig/issues/1995) Fixed log initialization.
+- [#1998](https://github.com/xmrig/xmrig/pull/1998) Added hashrate in the benchmark finished message.
+- [#2009](https://github.com/xmrig/xmrig/pull/2009) AstroBWT OpenCL fixes.
+- [#2028](https://github.com/xmrig/xmrig/pull/2028) RandomX x86 JIT: removed redundant `CFROUND`.
 
-# v2.9.0
-- [#899](https://github.com/xmrig/xmrig/issues/899) Added support for new algorithm `cn/half` for Masari and Stellite forks.
-- [#834](https://github.com/xmrig/xmrig/pull/834) Added ASM optimized code for AMD Bulldozer.
-- [#839](https://github.com/xmrig/xmrig/issues/839) Fixed FreeBSD compile.
-- [#857](https://github.com/xmrig/xmrig/pull/857) Fixed impossible to build for macOS without clang.
+# v6.7.0
+- **[#1991](https://github.com/xmrig/xmrig/issues/1991) Added Apple M1 processor support.**
+- **[#1986](https://github.com/xmrig/xmrig/pull/1986) Up to 20-30% faster RandomX dataset initialization with AVX2 on some CPUs.**
+- [#1964](https://github.com/xmrig/xmrig/pull/1964) Cleanup and refactoring.
+- [#1966](https://github.com/xmrig/xmrig/pull/1966) Removed libcpuid support.
+- [#1968](https://github.com/xmrig/xmrig/pull/1968) Added virtual machine detection.
+- [#1969](https://github.com/xmrig/xmrig/pull/1969) [#1970](https://github.com/xmrig/xmrig/pull/1970) Fixed errors found by static analysis.
+- [#1977](https://github.com/xmrig/xmrig/pull/1977) Fixed: secure JIT and huge pages are incompatible on Windows.
+- [#1979](https://github.com/xmrig/xmrig/pull/1979) Term `x64` replaced to `64-bit`.
+- [#1980](https://github.com/xmrig/xmrig/pull/1980) Fixed build on gcc 11.
+- [#1989](https://github.com/xmrig/xmrig/pull/1989) Fixed broken Dero solo mining.
 
-# v2.8.3
-- [#813](https://github.com/xmrig/xmrig/issues/813) Fixed critical bug with Minergate pool and variant 2.
+# v6.6.2
+- [#1958](https://github.com/xmrig/xmrig/pull/1958) Added example mining scripts to help new miners.
+- [#1959](https://github.com/xmrig/xmrig/pull/1959) Optimized JIT compiler.
+- [#1960](https://github.com/xmrig/xmrig/pull/1960) Fixed RandomX init when switching to other algo and back.
 
-# v2.8.1
-- [#768](https://github.com/xmrig/xmrig/issues/768) Fixed build with Visual Studio 2015.
-- [#769](https://github.com/xmrig/xmrig/issues/769) Fixed regression, some ANSI escape sequences was in log with disabled colors.
-- [#777](https://github.com/xmrig/xmrig/issues/777) Better report about pool connection issues. 
-- Simplified checks for ASM auto detection, only AES support necessary.
-- Added missing options to `--help` output.
+# v6.6.1
+- Fixed, benchmark validation on NUMA hardware produced incorrect results in some conditions.
 
-# v2.8.0
-- **[#753](https://github.com/xmrig/xmrig/issues/753) Added new algorithm [CryptoNight variant 2](https://github.com/xmrig/xmrig/issues/753) for Monero fork, thanks [@SChernykh](https://github.com/SChernykh).**
-  - Added global and per thread option `"asm"` and and command line equivalent.
-- **[#758](https://github.com/xmrig/xmrig/issues/758) Added SSL/TLS support for secure connections to pools.**
-  - Added per pool options `"tls"` and `"tls-fingerprint"` and command line equivalents.
-- [#767](https://github.com/xmrig/xmrig/issues/767) Added config autosave feature, same with GPU miners.  
-- [#245](https://github.com/xmrig/xmrig-proxy/issues/245) Fixed API ID collision when run multiple miners on same machine.
-- [#757](https://github.com/xmrig/xmrig/issues/757) Fixed send buffer overflow.
+# v6.6.0
+- Online benchmark protocol upgraded to v2, validation not compatible with previous versions.
+  - Single thread benchmark now is cheat-resistant, not possible speedup it with multiple threads.
+  - RandomX dataset is now always initialized with static seed, to prevent time cheat by report slow dataset initialization.
+  - Zero delay online submission, to make time validation much more precise and strict.
+  - DNS cache for online benchmark to prevent unexpected delays.
 
-# v2.6.4
-- [#700](https://github.com/xmrig/xmrig/issues/700) `cryptonight-lite/ipbc` replaced to `cryptonight-heavy/tube` for **Bittube (TUBE)**.
-- Added `cryptonight/rto` (cryptonight variant 1 with IPBC/TUBE mod) variant for **Arto (RTO)** coin.
-- Added `cryptonight/xao` (original cryptonight with bigger iteration count) variant for **Alloy (XAO)** coin.
-- Better variant detection for **nicehash.com** and **minergate.com**.
-- [#692](https://github.com/xmrig/xmrig/issues/692) Added support for specify both algorithm and variant via single `algo` option.
+# v6.5.3
+- [#1946](https://github.com/xmrig/xmrig/pull/1946) Fixed MSR mod names in JSON API (v6.5.2 affected).
 
-# v2.6.3
-- **Added support for new cryptonight-heavy variant xhv** (`cn-heavy/xhv`) for upcoming Haven Protocol fork.
-- **Added support for new cryptonight variant msr** (`cn/msr`) also known as `cryptonight-fast` for upcoming Masari fork.
-- Added new detailed hashrate report.
-- [#446](https://github.com/xmrig/xmrig/issues/446) Likely fixed SIGBUS error on 32 bit ARM CPUs.
-- [#551](https://github.com/xmrig/xmrig/issues/551) Fixed `cn-heavy` algorithm on ARMv8.
-- [#614](https://github.com/xmrig/xmrig/issues/614) Fixed display issue with huge pages percentage when colors disabled.
-- [#615](https://github.com/xmrig/xmrig/issues/615) Fixed build without libcpuid.
-- [#629](https://github.com/xmrig/xmrig/pull/629) Fixed file logging with non-seekable files.
-- [#672](https://github.com/xmrig/xmrig/pull/672) Reverted back `cryptonight-light` and exit if no valid algorithm specified.
+# v6.5.2
+- [#1935](https://github.com/xmrig/xmrig/pull/1935) Separate MSR mod for Zen/Zen2 and Zen3.
+- [#1937](https://github.com/xmrig/xmrig/issues/1937) Print path to existing WinRing0 service without verbose option.
+- [#1939](https://github.com/xmrig/xmrig/pull/1939) Fixed build with gcc 4.8.
+- [#1941](https://github.com/xmrig/xmrig/pull/1941) Added CPUID info to JSON report.
+- [#1941](https://github.com/xmrig/xmrig/pull/1942) Fixed alignment modification in memory pool.
+- [#1944](https://github.com/xmrig/xmrig/pull/1944) Updated `randomx_boost.sh` with new MSR mod.
+- Added `250K` and `500K` offline benchmarks.
 
-# v2.6.2
- - [#607](https://github.com/xmrig/xmrig/issues/607) Fixed donation bug.
- - [#610](https://github.com/xmrig/xmrig/issues/610) Fixed ARM build.
+# v6.5.1
+- [#1932](https://github.com/xmrig/xmrig/pull/1932) New MSR mod for Ryzen, up to +3.5% on Zen2 and +1-2% on Zen3.
+- [#1918](https://github.com/xmrig/xmrig/issues/1918) Fixed 1GB huge pages support on ARMv8.
+- [#1926](https://github.com/xmrig/xmrig/pull/1926) Fixed compilation on ARMv8 with GCC 9.3.0.
+- [#1929](https://github.com/xmrig/xmrig/issues/1929) Fixed build without HTTP.
 
-# v2.6.1
- - [#168](https://github.com/xmrig/xmrig-proxy/issues/168) Added support for [mining algorithm negotiation](https://github.com/xmrig/xmrig-proxy/blob/dev/doc/STRATUM_EXT.md#1-mining-algorithm-negotiation).
- - Added IPBC coin support, base algorithm `cn-lite` variant `ipbc`.
- - [#581](https://github.com/xmrig/xmrig/issues/581) Added support for upcoming Stellite (XTL) fork, base algorithm `cn` variant `xtl`, variant can set now, no need do it after fork.
- - Added support for **rig-id** stratum protocol extensions, compatible with xmr-stak.
- - Changed behavior for option `variant=-1` for `cryptonight`, now variant is `1` by default, if you mine old coins need change `variant` to `0`.
- - A lot of small fixes and better unification with proxy code.
+# v6.5.0
+- **Added [online benchmark](https://xmrig.com/benchmark) mode for sharing results.**
+  - Added new command line options: `--submit`, `	--verify=ID`, `	--seed=SEED`, `--hash=HASH`.
+- [#1912](https://github.com/xmrig/xmrig/pull/1912) Fixed MSR kernel module warning with new Linux kernels.
+- [#1925](https://github.com/xmrig/xmrig/pull/1925) Add checking for config files in user home directory.
+- Added vendor to ARM CPUs name and added `"arch"` field to API.
+- Removed legacy CUDA plugin API.
 
-# v2.6.0-beta3
-- [#563](https://github.com/xmrig/xmrig/issues/563) **Added [advanced threads mode](https://github.com/xmrig/xmrig/issues/563), now possible configure each thread individually.**
-- [#255](https://github.com/xmrig/xmrig/issues/563) Low power mode extended to **triple**, **quard** and **penta** modes.
-- [#519](https://github.com/xmrig/xmrig/issues/519) Fixed high donation levels, improved donation start time randomization.
-- [#554](https://github.com/xmrig/xmrig/issues/554) Fixed regression with `print-time` option.
+# v6.4.0
+- [#1862](https://github.com/xmrig/xmrig/pull/1862) **RandomX: removed `rx/loki` algorithm.**
+- [#1890](https://github.com/xmrig/xmrig/pull/1890) **Added `argon2/chukwav2` algorithm.**
+- [#1895](https://github.com/xmrig/xmrig/pull/1895) [#1897](https://github.com/xmrig/xmrig/pull/1897) **Added [benchmark and stress test](https://github.com/xmrig/xmrig/blob/dev/doc/BENCHMARK.md).**
+- [#1864](https://github.com/xmrig/xmrig/pull/1864) RandomX: improved software AES performance.
+- [#1870](https://github.com/xmrig/xmrig/pull/1870) RandomX: fixed unexpected resume due to disconnect during dataset init.
+- [#1872](https://github.com/xmrig/xmrig/pull/1872) RandomX: fixed `randomx_create_vm` call.
+- [#1875](https://github.com/xmrig/xmrig/pull/1875) RandomX: fixed crash on x86.
+- [#1876](https://github.com/xmrig/xmrig/pull/1876) RandomX: added `huge-pages-jit` config parameter.
+- [#1881](https://github.com/xmrig/xmrig/pull/1881) Fixed possible race condition in hashrate counting code.
+- [#1882](https://github.com/xmrig/xmrig/pull/1882) [#1886](https://github.com/xmrig/xmrig/pull/1886) [#1887](https://github.com/xmrig/xmrig/pull/1887) [#1893](https://github.com/xmrig/xmrig/pull/1893) General code improvements.
+- [#1885](https://github.com/xmrig/xmrig/pull/1885) Added more precise hashrate calculation.
+- [#1889](https://github.com/xmrig/xmrig/pull/1889) Fixed libuv performance issue on Linux.
 
-# v2.6.0-beta2
-- Improved performance for `cryptonight v7` especially in double hash mode.
-- [#499](https://github.com/xmrig/xmrig/issues/499) IPv6 disabled for internal HTTP API by default, was causing issues on some systems.
-- Added short aliases for algorithm names: `cn`, `cn-lite` and `cn-heavy`.
-- Fixed regressions (v2.6.0-beta1 affected)
-  - [#494](https://github.com/xmrig/xmrig/issues/494) Command line option `--donate-level` was broken.
-  - [#502](https://github.com/xmrig/xmrig/issues/502) Build without libmicrohttpd was broken.
-  - Fixed nonce calculation for `--av 4` (software AES, double hash) was causing reduction of effective hashrate and rejected shares on nicehash.
+# v6.3.5
+- [#1845](https://github.com/xmrig/xmrig/pull/1845) [#1861](https://github.com/xmrig/xmrig/pull/1861) Fixed ARM build and added CMake option `WITH_SSE4_1`.
+- [#1846](https://github.com/xmrig/xmrig/pull/1846) KawPow: fixed OpenCL memory leak.
+- [#1849](https://github.com/xmrig/xmrig/pull/1849) [#1859](https://github.com/xmrig/xmrig/pull/1859) RandomX: optimized soft AES code.
+- [#1850](https://github.com/xmrig/xmrig/pull/1850) [#1852](https://github.com/xmrig/xmrig/pull/1852) General code improvements.
+- [#1853](https://github.com/xmrig/xmrig/issues/1853) [#1856](https://github.com/xmrig/xmrig/pull/1856) [#1857](https://github.com/xmrig/xmrig/pull/1857) Fixed crash on old CPUs.
 
-# v2.6.0-beta1
- - [#476](https://github.com/xmrig/xmrig/issues/476) **Added Cryptonight-Heavy support for Sumokoin ASIC resistance fork.**
- - HTTP server now runs in main loop, it make possible easy extend API without worry about thread synchronization.
- - Added initial graceful reload support, miner will reload configuration if config file changed, disabled by default until it will be fully implemented and tested.
- - Added API endpoint `PUT /1/config` to update current config.
- - Added API endpoint `GET /1/config` to get current active config.
- - Added API endpoint `GET /1/threads` to get current active threads configuration.
- - API endpoint `GET /` now deprecated, use `GET /1/summary` instead.
- - Added `--api-no-ipv6` and similar config option to disable IPv6 support for HTTP API.
- - Added `--api-no-restricted` to enable full access to api, this option has no effect if `--api-access-token` not specified.
+# v6.3.4
+- [#1823](https://github.com/xmrig/xmrig/pull/1823) RandomX: added new option `scratchpad_prefetch_mode`.
+- [#1827](https://github.com/xmrig/xmrig/pull/1827) [#1831](https://github.com/xmrig/xmrig/pull/1831) Improved nonce iteration performance.
+- [#1828](https://github.com/xmrig/xmrig/pull/1828) RandomX: added SSE4.1-optimized Blake2b.
+- [#1830](https://github.com/xmrig/xmrig/pull/1830) RandomX: added performance profiler (for developers).
+- [#1835](https://github.com/xmrig/xmrig/pull/1835) RandomX: returned old soft AES implementation and added auto-select between the two.
+- [#1840](https://github.com/xmrig/xmrig/pull/1840) RandomX: moved more stuff to compile time, small x86 JIT compiler speedup.
+- [#1841](https://github.com/xmrig/xmrig/pull/1841) Fixed Cryptonight OpenCL for AMD 20.7.2 drivers.
+- [#1842](https://github.com/xmrig/xmrig/pull/1842) RandomX: AES improvements, a bit faster hardware AES code when compiled with MSVC.
+- [#1843](https://github.com/xmrig/xmrig/pull/1843) RandomX: improved performance of GCC compiled binaries.
 
-# v2.5.3
-- Fixed critical bug, in some cases miner was can't recovery connection and switch to failover pool, version 2.5.2 affected. If you use v2.6.0-beta3 this issue doesn't concern you.
-- [#499](https://github.com/xmrig/xmrig/issues/499) IPv6 support disabled for internal HTTP API.
-- Added workaround for nicehash.com if you use `cryptonightv7.<region>.nicehash.com` option `variant=1` will be set automatically.
+# v6.3.3
+- [#1817](https://github.com/xmrig/xmrig/pull/1817) Fixed self-select login sequence.
+- Added brand new [build from source](https://xmrig.com/docs/miner/build) documentation.
+- New binary downloads for macOS (`macos-x64`), FreeBSD (`freebsd-static-x64`), Linux (`linux-static-x64`), Ubuntu 18.04 (`bionic-x64`), Ubuntu 20.04 (`focal-x64`).
+- Generic Linux download `xenial-x64` renamed to `linux-x64`.
+- Builds without SSL/TLS support are no longer provided.
+- Improved CUDA loader error reporting and fixed plugin load on Linux.
+- Fixed build warnings with Clang compiler.
+- Fixed colors on macOS.
 
-# v2.5.2
-- [#448](https://github.com/xmrig/xmrig/issues/478) Fixed broken reconnect.
+# v6.3.2
+- [#1794](https://github.com/xmrig/xmrig/pull/1794) More robust 1 GB pages handling.
+  - Don't allocate 1 GB per thread if 1 GB is the default huge page size.
+  - Try to allocate scratchpad from dataset's 1 GB huge pages, if normal huge pages are not available.
+  - Correctly initialize RandomX cache if 1 GB pages fail to allocate on a first NUMA node.
+- [#1806](https://github.com/xmrig/xmrig/pull/1806) Fixed macOS battery detection.
+- [#1809](https://github.com/xmrig/xmrig/issues/1809) Improved auto configuration on ARM CPUs.
+  - Added retrieving ARM CPU names, based on lscpu code and database.
 
-# v2.5.1
-- [#454](https://github.com/xmrig/xmrig/issues/454) Fixed build with libmicrohttpd version below v0.9.35.
-- [#456](https://github.com/xmrig/xmrig/issues/459) Verbose errors related to donation pool was not fully silenced.
-- [#459](https://github.com/xmrig/xmrig/issues/459) Fixed regression (version 2.5.0 affected) with connection to **xmr.f2pool.com**.
+# v6.3.1
+- [#1786](https://github.com/xmrig/xmrig/pull/1786) Added `pause-on-battery` option, supported on Windows and Linux.
+- Added command line options `--randomx-cache-qos` and `--argon2-impl`.
 
-# v2.5.0
-- [#434](https://github.com/xmrig/xmrig/issues/434) **Added support for Monero v7 PoW, scheduled on April 6.**
-- Added full IPv6 support.
-- Added protocol extension, when use the miner with xmrig-proxy 2.5+ no more need manually specify `nicehash` option.
-- [#123](https://github.com/xmrig/xmrig-proxy/issues/123) Fixed regression (all versions since 2.4 affected) fragmented responses from pool/proxy was parsed incorrectly.
-- [#428](https://github.com/xmrig/xmrig/issues/428) Fixed regression (version 2.4.5 affected) with CPU cache size detection.
+# v6.3.0
+- [#1771](https://github.com/xmrig/xmrig/pull/1771) Adopted new SSE2NEON and reduced ARM-specific changes.
+- [#1774](https://github.com/xmrig/xmrig/pull/1774) RandomX: Added new option `cache_qos` in `randomx` object for cache QoS support.
+- [#1777](https://github.com/xmrig/xmrig/pull/1777) Added support for upcoming Haven offshore fork.
+  - [#1780](https://github.com/xmrig/xmrig/pull/1780) CryptoNight OpenCL: fix for long input data.
 
-# v2.4.5
-- [#324](https://github.com/xmrig/xmrig/pull/324) Fixed build without libmicrohttpd (CMake cache issue).
-- [#341](https://github.com/xmrig/xmrig/issues/341) Fixed wrong exit code and added command line option `--dry-run`.
-- [#385](https://github.com/xmrig/xmrig/pull/385) Up to 20% performance increase for non-AES CPU and fixed Intel Core 2 cache detection.
+# v6.2.3
+- [#1745](https://github.com/xmrig/xmrig/pull/1745) AstroBWT: fixed OpenCL compilation on some systems.
+- [#1749](https://github.com/xmrig/xmrig/pull/1749) KawPow: optimized CPU share verification.
+- [#1752](https://github.com/xmrig/xmrig/pull/1752) RandomX: added error message when MSR mod fails.
+- [#1754](https://github.com/xmrig/xmrig/issues/1754) Fixed GPU health readings for pre Vega GPUs on Linux.
+- [#1756](https://github.com/xmrig/xmrig/issues/1756) Added results and connection reports.
+- [#1759](https://github.com/xmrig/xmrig/pull/1759) KawPow: fixed DAG initialization on slower AMD GPUs.
+- [#1763](https://github.com/xmrig/xmrig/pull/1763) KawPow: fixed rare duplicate share errors.
+- [#1766](https://github.com/xmrig/xmrig/pull/1766) RandomX: small speedup on Ryzen CPUs.
 
-# v2.4.4
- - Added libmicrohttpd version to --version output.
- - Fixed bug in singal handler, in some cases miner wasn't shutdown properly.
- - Fixed recent MSVC 2017 version detection.
- - [#279](https://github.com/xmrig/xmrig/pull/279) Fixed build on some macOS versions.
+# v6.2.2
+- [#1742](https://github.com/xmrig/xmrig/issues/1742) Fixed crash when use HTTP API.
 
-# v2.4.3
- - [#94](https://github.com/xmrig/xmrig/issues/94#issuecomment-342019257) [#216](https://github.com/xmrig/xmrig/issues/216) Added **ARMv8** and **ARMv7** support. Hardware AES supported, thanks [Imran Yusuff](https://github.com/imranyusuff).
- - [#157](https://github.com/xmrig/xmrig/issues/157) [#196](https://github.com/xmrig/xmrig/issues/196) Fixed Linux compile issues.
- - [#184](https://github.com/xmrig/xmrig/issues/184) Fixed cache size detection for CPUs with disabled Hyper-Threading.
- - [#200](https://github.com/xmrig/xmrig/issues/200) In some cases miner was doesn't write log to stdout.
+# v6.2.1
+- [#1726](https://github.com/xmrig/xmrig/issues/1726) Fixed detection of AVX2/AVX512.
+- [#1728](https://github.com/xmrig/xmrig/issues/1728) Fixed, 32 bit Windows builds was crash on start.
+- [#1729](https://github.com/xmrig/xmrig/pull/1729) Fixed KawPow crash on old CPUs.
+- [#1730](https://github.com/xmrig/xmrig/pull/1730) Improved displaying information for compute errors on GPUs.
+- [#1732](https://github.com/xmrig/xmrig/pull/1732) Fixed NiceHash disconnects for KawPow.
+- Fixed AMD GPU health (temperatures/power/clocks/fans) readings on Linux.
 
-# v2.4.2
- - [#60](https://github.com/xmrig/xmrig/issues/60) Added FreeBSD support, thanks [vcambur](https://github.com/vcambur).
- - [#153](https://github.com/xmrig/xmrig/issues/153) Fixed issues with dwarfpool.com.
- 
-# v2.4.1
-  - [#147](https://github.com/xmrig/xmrig/issues/147) Fixed comparability with monero-stratum.
+# v6.2.0-beta
+- [#1717](https://github.com/xmrig/xmrig/pull/1717) Added new algorithm `cn/ccx` for Conceal.
+- [#1718](https://github.com/xmrig/xmrig/pull/1718) Fixed, linker on Linux was marking entire executable as having an executable stack.
+- [#1720](https://github.com/xmrig/xmrig/pull/1720) Fixed broken CryptoNight algorithms family with gcc 10.1.
 
-# v2.4.0
- - Added [HTTP API](https://github.com/xmrig/xmrig/wiki/API).
- - Added comments support in config file.
- - libjansson replaced to rapidjson.
- - [#98](https://github.com/xmrig/xmrig/issues/98) Ignore `keepalive` option with minergate.com and nicehash.com.
- - [#101](https://github.com/xmrig/xmrig/issues/101) Fixed MSVC 2017 (15.3) compile time version detection.
- - [#108](https://github.com/xmrig/xmrig/issues/108) Silently ignore invalid values for `donate-level` option.
- - [#111](https://github.com/xmrig/xmrig/issues/111) Fixed build without AEON support.
- 
-# v2.3.1
-- [#68](https://github.com/xmrig/xmrig/issues/68) Fixed compatibility with Docker containers, was nothing print on console.
+# v6.0.1-beta
+- [#1708](https://github.com/xmrig/xmrig/issues/1708) Added `title` option.
+- [#1711](https://github.com/xmrig/xmrig/pull/1711) [cuda] Print errors from KawPow DAG initialization.
+- [#1713](https://github.com/xmrig/xmrig/pull/1713) [cuda] Reduced memory usage for KawPow, minimum CUDA plugin version now is 6.1.0.
 
-# v2.3.0
-- Added `--cpu-priority` option (0 idle, 2 normal to 5 highest).
-- Added `--user-agent` option, to set custom user-agent string for pool. For example `cpuminer-multi/0.1`.
-- Added `--no-huge-pages` option, to disable huge pages support.
-- [#62](https://github.com/xmrig/xmrig/issues/62) Don't send the login to the dev pool.
-- Force reconnect if pool block miner IP address. helps switch to backup pool.
-- Fixed: failed open default config file if path contains non English characters.
-- Fixed: error occurred if try use unavailable stdin or stdout, regression since version 2.2.0.
-- Fixed: message about huge pages support successfully enabled on Windows was not shown in release builds.
+# v6.0.0-beta
+- [#1694](https://github.com/xmrig/xmrig/pull/1694) Added support for KawPow algorithm (Ravencoin) on AMD/NVIDIA.
+- Removed previously deprecated `cn/gpu` algorithm.
+- Default donation level reduced to 1% but you still can increase it if you like.
 
-# v2.2.1
-- Fixed [terminal issues](https://github.com/xmrig/xmrig-proxy/issues/2#issuecomment-319914085) after exit on Linux and OS X.
+# v5.11.3
+- [#1718](https://github.com/xmrig/xmrig/pull/1718) Fixed, linker on Linux was marking entire executable as having an executable stack.
+- [#1720](https://github.com/xmrig/xmrig/pull/1720) Fixed broken CryptoNight algorithms family with gcc 10.1.
 
-# v2.2.0
-- [#46](https://github.com/xmrig/xmrig/issues/46) Restored config file support. Now possible use multiple config files and combine with command line options also added support for default config.
-- Improved colors support on Windows, now used uv_tty, legacy code removed.
-- QuickEdit Mode now disabled on Windows.
-- Added interactive commands in console window:: **h**ashrate, **p**ause, **r**esume.
-- Fixed autoconf mode for AMD FX CPUs.
+# v5.11.2
+- [#1664](https://github.com/xmrig/xmrig/pull/1664) Improved JSON config error reporting.
+- [#1668](https://github.com/xmrig/xmrig/pull/1668) Optimized RandomX dataset initialization.
+- [#1675](https://github.com/xmrig/xmrig/pull/1675) Fixed cross-compiling on Linux.
+- Fixed memory leak in HTTP client.
+- Build [dependencies](https://github.com/xmrig/xmrig-deps/releases/tag/v4.1) updated to recent versions.
+- Compiler for Windows gcc builds updated to v10.1.
 
-# v2.1.0
-- [#40](https://github.com/xmrig/xmrig/issues/40)
-Improved miner shutdown, fixed crash on exit for Linux and OS X.
-- Fixed, login request was contain malformed JSON if username or password has some special characters for example `\`. 
-- [#220](https://github.com/fireice-uk/xmr-stak-cpu/pull/220) Better support for Round Robin DNS, IP address now always chosen randomly instead of stuck on first one.
-- Changed donation address, new [xmrig-proxy](https://github.com/xmrig/xmrig-proxy) is coming soon.
+# v5.11.1
+- [#1652](https://github.com/xmrig/xmrig/pull/1652) Up to 1% RandomX perfomance improvement on recent AMD CPUs.
+- [#1306](https://github.com/xmrig/xmrig/issues/1306) Fixed possible double connection to a pool.
+- [#1654](https://github.com/xmrig/xmrig/issues/1654) Fixed build with LibreSSL.
 
-# v2.0.2
-- Better deal with possible duplicate jobs from pool, show warning and ignore duplicates.
-- For Windows builds libuv updated to version 1.13.1 and gcc to 7.1.0.
+# v5.11.0
+- **[#1632](https://github.com/xmrig/xmrig/pull/1632) Added AstroBWT CUDA support ([CUDA plugin](https://github.com/xmrig/xmrig-cuda) v3.0.0 or newer required).**
+- [#1605](https://github.com/xmrig/xmrig/pull/1605) Fixed AstroBWT OpenCL for NVIDIA GPUs.
+- [#1635](https://github.com/xmrig/xmrig/pull/1635) Added pooled memory allocation of RandomX VMs (+0.5% speedup on Zen2).
+- [#1641](https://github.com/xmrig/xmrig/pull/1641) RandomX JIT refactoring, smaller memory footprint and a bit faster overall.
+- [#1643](https://github.com/xmrig/xmrig/issues/1643) Fixed build on CentOS 7.
 
-# v2.0.1
- - [#27](https://github.com/xmrig/xmrig/issues/27) Fixed possibility crash on 32bit systems.
+# v5.10.0
+- [#1602](https://github.com/xmrig/xmrig/pull/1602) Added AMD GPUs support for AstroBWT algorithm.
+- [#1590](https://github.com/xmrig/xmrig/pull/1590) MSR mod automatically deactivated after switching from RandomX algorithms.
+- [#1592](https://github.com/xmrig/xmrig/pull/1592) Added AVX2 optimized code for AstroBWT algorithm.
+  - Added new config option `astrobwt-avx2` in `cpu` object and command line option `--astrobwt-avx2`.
+- [#1596](https://github.com/xmrig/xmrig/issues/1596) Major TLS (Transport Layer Security) subsystem update.
+  - Added new TLS options, please check [xmrig-proxy documentation](https://xmrig.com/docs/proxy/tls) for details.
+- `cn/gpu` algorithm now disabled by default and will be removed in next major (v6.x.x) release, no ETA for it right now.
+- Added command line option `--data-dir`.
 
-# v2.0.0
- - Option `--backup-url` removed, instead now possibility specify multiple pools for example: `-o example1.com:3333 -u user1 -p password1 -k -o example2.com:5555 -u user2 -o example3.com:4444 -u user3`
- - [#15](https://github.com/xmrig/xmrig/issues/15) Added option `-l, --log-file=FILE` to write log to file.
- - [#15](https://github.com/xmrig/xmrig/issues/15) Added option `-S, --syslog` to use syslog for logging, Linux only.
- - [#18](https://github.com/xmrig/xmrig/issues/18) Added nice messages for accepted/rejected shares with diff and network latency.
- - [#20](https://github.com/xmrig/xmrig/issues/20) Fixed `--cpu-affinity` for more than 32 threads.
- - Fixed Windows XP support.
- - Fixed regression, option `--no-color` was not fully disable colored output.
- - Show resolved pool IP address in miner output.
- 
-# v1.0.1
-- Fix broken software AES implementation, app has crashed if CPU not support AES-NI, only version 1.0.0 affected.
+# v5.9.0
+- [#1578](https://github.com/xmrig/xmrig/pull/1578) Added new RandomKEVA algorithm for upcoming Kevacoin fork, as `"algo": "rx/keva"` or `"coin": "keva"`.
+- [#1584](https://github.com/xmrig/xmrig/pull/1584) Fixed invalid AstroBWT hashes after algorithm switching.
+- [#1585](https://github.com/xmrig/xmrig/issues/1585) Fixed build without HTTP support.
+- Added command line option `--astrobwt-max-size`.
 
-# v1.0.0
-- Miner complete rewritten in C++ with libuv.
-- This version should be fully compatible (except config file) with previos versions, many new nice features will come in next versions.
-- This is still beta. If you found regression, stability or perfomance issues or have an idea for new feature please fell free to open new [issue](https://github.com/xmrig/xmrig/issues/new).
-- Added new option `--print-time=N`, print hashrate report every N seconds.
-- New hashrate reports, by default every 60 secons.
-- Added Microsoft Visual C++ 2015 and 2017 support.
-- Removed dependency on libcurl.
-- To compile this version from source please switch to [dev](https://github.com/xmrig/xmrig/tree/dev) branch.
+# v5.8.2
+- [#1580](https://github.com/xmrig/xmrig/pull/1580) AstroBWT algorithm 20-50% speedup.
+  - Added new option `astrobwt-max-size`.
+- [#1581](https://github.com/xmrig/xmrig/issues/1581) Fixed macOS build.
 
-# v0.8.2
-- Fixed L2 cache size detection for AMD CPUs (Bulldozer/Piledriver/Steamroller/Excavator architecture).
+# v5.8.1
+- [#1575](https://github.com/xmrig/xmrig/pull/1575) Fixed new block detection for DERO solo mining.
 
-# v0.8.2
-- Fixed L2 cache size detection for AMD CPUs (Bulldozer/Piledriver/Steamroller/Excavator architecture).
-- Fixed gcc 7.1 support.
+# v5.8.0
+- [#1573](https://github.com/xmrig/xmrig/pull/1573) Added new AstroBWT algorithm for upcoming DERO fork, as `"algo": "astrobwt"` or `"coin": "dero"`.
 
-# v0.8.1
-- Added nicehash support, detects automaticaly by pool URL, for example `cryptonight.eu.nicehash.com:3355` or manually via option `--nicehash`.
+# v5.7.0
+- **Added SOCKS5 proxies support for Tor https://xmrig.com/docs/miner/tor.**
+- [#377](https://github.com/xmrig/xmrig-proxy/issues/377) Fixed duplicate jobs in daemon (solo) mining client.
+- [#1560](https://github.com/xmrig/xmrig/pull/1560) RandomX 0.3-0.4% speedup depending on CPU.
+- Fixed possible crashes in HTTP client.
 
-# v0.8.0
-- Added double hash mode, also known as lower power mode. `--av=2` and `--av=4`.
-- Added smart automatic CPU configuration. Default threads count now depends on size of the L3 cache of CPU.
-- Added CryptoNight-Lite support for AEON `-a cryptonight-lite`.
-- Added `--max-cpu-usage` option for auto CPU configuration mode.
-- Added `--safe` option for adjust threads and algorithm variations to current CPU.
-- No more manual steps to enable huge pages on Windows. XMRig will do it automatically.
-- Removed BMI2 algorithm variation.
-- Removed default pool URL.
+# v5.6.0
+- [#1536](https://github.com/xmrig/xmrig/pull/1536) Added workaround for new AMD GPU drivers.
+- [#1546](https://github.com/xmrig/xmrig/pull/1546) Fixed generic OpenCL code for AMD Navi GPUs.
+- [#1551](https://github.com/xmrig/xmrig/pull/1551) Added RandomX JIT for AMD Navi  GPUs.
+- Added health information for AMD GPUs (clocks/power/fan/temperature) via ADL (Windows) and sysfs (Linux).
+- Fixed possible nicehash nonce overflow in some conditions.
+- Fixed wrong OpenCL platform on macOS, option `platform` now ignored on this OS.
 
-# v0.6.0
-- Added automatic cryptonight self test.
-- New software AES algorithm variation. Will be automatically selected if cpu not support AES-NI.
-- Added 32 bit builds.
-- Documented [algorithm variations](https://github.com/xmrig/xmrig#algorithm-variations).
+# v5.5.3
+- [#1529](https://github.com/xmrig/xmrig/pull/1529) Fixed crash on Bulldozer CPUs.
 
-# v0.5.0
-- Initial public release.
+# v5.5.2
+- [#1500](https://github.com/xmrig/xmrig/pull/1500) Removed unnecessary code from RandomX JIT compiler.
+- [#1502](https://github.com/xmrig/xmrig/pull/1502) Optimizations for AMD Bulldozer.
+- [#1508](https://github.com/xmrig/xmrig/pull/1508) Added support for BMI2 instructions.
+- [#1510](https://github.com/xmrig/xmrig/pull/1510) Optimized `CFROUND` instruction for RandomX.
+- [#1520](https://github.com/xmrig/xmrig/pull/1520) Fixed thread affinity.
+
+# v5.5.1
+- [#1469](https://github.com/xmrig/xmrig/issues/1469) Fixed build with gcc 4.8.
+- [#1473](https://github.com/xmrig/xmrig/pull/1473) Added RandomX auto-config for mobile Ryzen APUs.
+- [#1477](https://github.com/xmrig/xmrig/pull/1477) Fixed build with Clang.
+- [#1489](https://github.com/xmrig/xmrig/pull/1489) RandomX JIT compiler tweaks.
+- [#1493](https://github.com/xmrig/xmrig/pull/1493) Default value for Intel MSR preset changed to `15`.
+- Fixed unwanted resume after RandomX dataset change.
+
+# v5.5.0
+- [#179](https://github.com/xmrig/xmrig/issues/179) Added support for [environment variables](https://xmrig.com/docs/miner/environment-variables) in config file.
+- [#1445](https://github.com/xmrig/xmrig/pull/1445) Removed `rx/v` algorithm.
+- [#1453](https://github.com/xmrig/xmrig/issues/1453) Fixed crash on 32bit systems.
+- [#1459](https://github.com/xmrig/xmrig/issues/1459) Fixed crash on very low memory systems.
+- [#1465](https://github.com/xmrig/xmrig/pull/1465) Added fix for 1st-gen Ryzen crashes.
+- [#1466](https://github.com/xmrig/xmrig/pull/1466) Added `cn-pico/tlo` algorithm.
+- Added `--randomx-no-rdmsr` command line option.
+- Added console title for Windows with miner name and version.
+- On Windows `priority` option now also change base priority.
+
+# v5.4.0
+- [#1434](https://github.com/xmrig/xmrig/pull/1434) Added RandomSFX (`rx/sfx`) algorithm for Safex Cash.
+- [#1445](https://github.com/xmrig/xmrig/pull/1445) Added RandomV (`rx/v`) algorithm for *new* MoneroV.
+- [#1419](https://github.com/xmrig/xmrig/issues/1419) Added reverting MSR changes on miner exit, use `"rdmsr": false,` in `"randomx"` object to disable this feature.
+- [#1423](https://github.com/xmrig/xmrig/issues/1423) Fixed conflicts with exists WinRing0 driver service.
+- [#1425](https://github.com/xmrig/xmrig/issues/1425) Fixed crash on first generation Zen CPUs (MSR mod accidentally enable Opcache), additionally now you can disable Opcache and enable MSR mod via config `"wrmsr": ["0xc0011020:0x0", "0xc0011021:0x60", "0xc0011022:0x510000", "0xc001102b:0x1808cc16"],`.
+- Added advanced usage for `wrmsr` option, for example: `"wrmsr": ["0x1a4:0x6"],` (Intel) and `"wrmsr": ["0xc0011020:0x0", "0xc0011021:0x40:0xffffffffffffffdf", "0xc0011022:0x510000", "0xc001102b:0x1808cc16"],` (Ryzen).
+- Added new config option `"verbose"` and command line option `--verbose`.
+
+# v5.3.0
+- [#1414](https://github.com/xmrig/xmrig/pull/1414) Added native MSR support for Windows, by using signed **WinRing0 driver** (© 2007-2009 OpenLibSys.org).
+- Added new [MSR documentation](https://xmrig.com/docs/miner/randomx-optimization-guide/msr).
+- [#1418](https://github.com/xmrig/xmrig/pull/1418) Increased stratum send buffer size.
+
+# v5.2.1
+- [#1408](https://github.com/xmrig/xmrig/pull/1408) Added RandomX boost script for Linux (if you don't like run miner with root privileges).
+- Added support for [AMD Ryzen MSR registers](https://www.reddit.com/r/MoneroMining/comments/e962fu/9526_hs_on_ryzen_7_3700x_xmrig_520_1gb_pages_msr/) (Linux only).
+- Fixed command line option `--randomx-wrmsr` option without parameters.
+
+# v5.2.0
+- **[#1388](https://github.com/xmrig/xmrig/pull/1388) Added [1GB huge pages support](https://xmrig.com/docs/miner/hugepages#onegb-huge-pages) for Linux.**
+  - Added new option `1gb-pages` in `randomx` object with command line equivalent `--randomx-1gb-pages`.
+  - Added automatic huge pages configuration on Linux if use the miner with root privileges.
+- **Added [automatic Intel prefetchers configuration](https://xmrig.com/docs/miner/randomx-optimization-guide#intel-specific-optimizations) on Linux.**
+   - Added new option `wrmsr` in `randomx` object with command line equivalent `--randomx-wrmsr=6`.
+- [#1396](https://github.com/xmrig/xmrig/pull/1396) [#1401](https://github.com/xmrig/xmrig/pull/1401) New performance optimizations for Ryzen CPUs. 
+- [#1385](https://github.com/xmrig/xmrig/issues/1385) Added `max-threads-hint` option support for RandomX dataset initialization threads.  
+- [#1386](https://github.com/xmrig/xmrig/issues/1386) Added `priority` option support for RandomX dataset initialization threads. 
+- For official builds all dependencies (libuv, hwloc, openssl) updated to recent versions.
+- Windows `msvc` builds now use Visual Studio 2019 instead of 2017.
+
+# v5.1.1
+- [#1365](https://github.com/xmrig/xmrig/issues/1365) Fixed various system response/stability issues.
+  - Added new CPU option `yield` and command line equivalent `--cpu-no-yield`.
+- [#1363](https://github.com/xmrig/xmrig/issues/1363) Fixed wrong priority of main miner thread.
+
+# v5.1.0
+- [#1351](https://github.com/xmrig/xmrig/pull/1351) RandomX optimizations and fixes.
+  - Improved RandomX performance (up to +6-7% on Intel CPUs, +2-3% on Ryzen CPUs)
+  - Added workaround for Intel JCC erratum bug see https://www.phoronix.com/scan.php?page=article&item=intel-jcc-microcode&num=1 for details.
+  - Note! Always disable "Hardware prefetcher" and "Adjacent cacheline prefetch" in BIOS for Intel CPUs to get the optimal RandomX performance.
+- [#1307](https://github.com/xmrig/xmrig/issues/1307) Fixed mining resume after donation round for pools with `self-select` feature.
+- [#1318](https://github.com/xmrig/xmrig/issues/1318#issuecomment-559676080) Added option `"mode"` (or `--randomx-mode`) for RandomX.
+  - Added memory information on miner startup.
+  - Added `resources` field to summary API with memory information and load average.
+
+# v5.0.1
+- [#1234](https://github.com/xmrig/xmrig/issues/1234) Fixed compatibility with some AMD GPUs.
+- [#1284](https://github.com/xmrig/xmrig/issues/1284) Fixed build without RandomX.
+- [#1285](https://github.com/xmrig/xmrig/issues/1285) Added command line options `--cuda-bfactor-hint` and `--cuda-bsleep-hint`.
+- [#1290](https://github.com/xmrig/xmrig/pull/1290) Fixed 32-bit ARM compilation.
+
+# v5.0.0
+This version is first stable unified 3 in 1 GPU+CPU release, OpenCL support built in in miner and not require additional external dependencies on compile time, NVIDIA CUDA available as external [CUDA plugin](https://github.com/xmrig/xmrig-cuda), for convenient, 3 in 1 downloads with recent CUDA version also provided.
+
+This release based on 4.x.x series and include all features from v4.6.2-beta, changelog below include only the most important changes, [full changelog](doc/CHANGELOG_OLD.md) available separately.
+
+- [#1272](https://github.com/xmrig/xmrig/pull/1272) Optimized hashrate calculation.
+- [#1263](https://github.com/xmrig/xmrig/pull/1263) Added new option `dataset_host` for NVIDIA GPUs with less than 4 GB memory (RandomX only).
+- [#1068](https://github.com/xmrig/xmrig/pull/1068) Added support for `self-select` stratum protocol extension.
+- [#1227](https://github.com/xmrig/xmrig/pull/1227) Added new algorithm `rx/arq`, RandomX variant for upcoming ArQmA fork.
+- [#808](https://github.com/xmrig/xmrig/issues/808#issuecomment-539297156) Added experimental support for persistent memory for CPU mining threads.
+- [#1221](https://github.com/xmrig/xmrig/issues/1221) Improved RandomX dataset memory usage and initialization speed for NUMA machines.
+- [#1175](https://github.com/xmrig/xmrig/issues/1175) Fixed support for systems where total count of NUMA nodes not equal usable nodes count.
+- Added config option `cpu/max-threads-hint` and command line option `--cpu-max-threads-hint`.
+- [#1185](https://github.com/xmrig/xmrig/pull/1185) Added JIT compiler for RandomX on ARMv8.
+- Improved API endpoint `GET /2/backends` and added support for this endpoint to [workers.xmrig.info](http://workers.xmrig.info).
+- Added command line option `--no-cpu` to disable CPU backend.
+- Added OpenCL specific command line options: `--opencl`, `--opencl-devices`, `--opencl-platform`, `--opencl-loader` and `--opencl-no-cache`.
+- Added CUDA specific command line options: `--cuda`, `--cuda-loader` and `--no-nvml`.
+- Removed command line option `--http-enabled`, HTTP API enabled automatically if any other `--http-*` option provided.
+- [#1172](https://github.com/xmrig/xmrig/issues/1172) **Added OpenCL mining backend.**
+  - [#268](https://github.com/xmrig/xmrig-amd/pull/268) [#270](https://github.com/xmrig/xmrig-amd/pull/270) [#271](https://github.com/xmrig/xmrig-amd/pull/271) [#273](https://github.com/xmrig/xmrig-amd/pull/273) [#274](https://github.com/xmrig/xmrig-amd/pull/274) [#1171](https://github.com/xmrig/xmrig/pull/1171) Added RandomX support for OpenCL, thanks [@SChernykh](https://github.com/SChernykh).
+- Algorithm `cn/wow` removed, as no longer alive. 
+
+# Previous versions
+[doc/CHANGELOG_OLD.md](doc/CHANGELOG_OLD.md)

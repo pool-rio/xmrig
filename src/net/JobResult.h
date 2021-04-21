@@ -6,8 +6,8 @@
  * Copyright 2016      Jay D Dee   <jayddee246@gmail.com>
  * Copyright 2017-2018 XMR-Stak    <https://github.com/fireice-uk>, <https://github.com/psychocrypt>
  * Copyright 2018      Lee Clagett <https://github.com/vtnerd>
- * Copyright 2018-2019 SChernykh   <https://github.com/SChernykh>
- * Copyright 2016-2019 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
+ * Copyright 2018-2020 SChernykh   <https://github.com/SChernykh>
+ * Copyright 2016-2020 XMRig       <https://github.com/xmrig>, <support@xmrig.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -28,10 +28,11 @@
 
 
 #include <memory.h>
-#include <stdint.h>
+#include <cstdint>
 
 
-#include "common/net/Job.h"
+#include "base/tools/String.h"
+#include "base/net/stratum/Job.h"
 
 
 namespace xmrig {
@@ -40,6 +41,7 @@ namespace xmrig {
 class JobResult
 {
 public:
+<<<<<<< HEAD
     inline JobResult() : poolId(0), diff(0), nonce(0), nonce64(0) {}
     inline JobResult(int poolId, const Id &jobId, const Id &clientId, uint32_t nonce, uint64_t nonce64, const uint8_t *result, uint32_t diff, const Algorithm &algorithm) :
         algorithm(algorithm),
@@ -49,11 +51,26 @@ public:
         diff(diff),
         nonce(nonce),
         nonce64(nonce64)
+=======
+    JobResult() = delete;
+
+    inline JobResult(const Job &job, uint64_t nonce, const uint8_t *result, const uint8_t* header_hash = nullptr, const uint8_t *mix_hash = nullptr) :
+        algorithm(job.algorithm()),
+        clientId(job.clientId()),
+        jobId(job.id()),
+        backend(job.backend()),
+        nonce(nonce),
+        diff(job.diff()),
+        index(job.index())
+>>>>>>> upstream/master
     {
-        memcpy(this->result, result, sizeof(this->result));
-    }
+        memcpy(m_result, result, sizeof(m_result));
 
+        if (header_hash) {
+            memcpy(m_headerHash, header_hash, sizeof(m_headerHash));
+        }
 
+<<<<<<< HEAD
     inline JobResult(const Job &job) : poolId(0), diff(0), nonce(0), nonce64(0)
     {
         jobId     = job.id();
@@ -63,14 +80,25 @@ public:
         nonce     = *job.nonce();
         nonce64   = *job.nonce64();
         algorithm = job.algorithm();
+=======
+        if (mix_hash) {
+            memcpy(m_mixHash, mix_hash, sizeof(m_mixHash));
+        }
+>>>>>>> upstream/master
     }
 
-
-    inline uint64_t actualDiff() const
+    inline JobResult(const Job &job) :
+        algorithm(job.algorithm()),
+        clientId(job.clientId()),
+        jobId(job.id()),
+        backend(job.backend()),
+        nonce(0),
+        diff(0),
+        index(job.index())
     {
-        return Job::toDiff(reinterpret_cast<const uint64_t*>(result)[3]);
     }
 
+<<<<<<< HEAD
 
     Algorithm algorithm;
     Id clientId;
@@ -80,6 +108,26 @@ public:
     uint32_t nonce;
     uint64_t nonce64;
     uint8_t result[32];
+=======
+    inline const uint8_t *result() const     { return m_result; }
+    inline uint64_t actualDiff() const       { return Job::toDiff(reinterpret_cast<const uint64_t*>(m_result)[3]); }
+    inline uint8_t *result()                 { return m_result; }
+    inline const uint8_t *headerHash() const { return m_headerHash; }
+    inline const uint8_t *mixHash() const    { return m_mixHash; }
+
+    const Algorithm algorithm;
+    const String clientId;
+    const String jobId;
+    const uint32_t backend;
+    const uint64_t nonce;
+    const uint64_t diff;
+    const uint8_t index;
+
+private:
+    uint8_t m_result[32]     = { 0 };
+    uint8_t m_headerHash[32] = { 0 };
+    uint8_t m_mixHash[32]    = { 0 };
+>>>>>>> upstream/master
 };
 
 
